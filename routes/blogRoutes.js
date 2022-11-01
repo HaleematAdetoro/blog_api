@@ -1,19 +1,17 @@
 const express = require('express');
+const blogController = require('../controllers/blogController');
 
 const blogRouter = express.Router();
 
-blogRouter.get('/', (req, res) => {
-    res.json({ message: "Get all Published blogs"})
-});
+blogRouter.get('/', blogController.getAllPublishedPosts);
+    
+blogRouter.get('/:userId', blogController.getAllUsersPosts);
 
-blogRouter.post("/", (req,res) => {
-    res.json({ message: "created new blog"})
-});
+blogRouter.post("/", blogController.createNewPost);
 
-blogRouter.patch("/:blogId", (req, res) => {
-    res.send("update an existing blog");
-})
+blogRouter.patch("/:blogId", blogController.updateOnePost);
 
-blogRouter.delete("/:blogId", (req, res) => {
-    res.send("delete an existing workout");
-})
+blogRouter.delete("/:blogId", blogController.deleteOnePost);
+
+
+module.exports = blogRouter;

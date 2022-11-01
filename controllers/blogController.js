@@ -1,6 +1,6 @@
 const { blogModel } = require('../models/blogModel');
 
-const getAllPosts = (req, res) => {
+const getAllUsersPosts = (req, res) => {
     res.send ("Get all Posts");
 };
 
@@ -15,4 +15,17 @@ const createNewPost = (req, res) => {
 const updateOnePost = (req, res) => {
   res.send("Update one post")  
 };
+
+const deleteOnePost = (req, res) => {
+    res.send("Delete one post")
+}
+
+module.exports = {
+    getAllUsersPosts,
+    getAllPublishedPosts,
+    createNewPost,
+    updateOnePost,
+    deleteOnePost
+}
+
 
