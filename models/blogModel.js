@@ -12,13 +12,17 @@ const blogSchema = new Schema ({
     description: {
         type: String
     },
-    state: {
+    author: {
         type: String,
-        enum: ['draft', 'published'], 
-        default: 'draft'
+        required: true
+    },
+    state: {
+        type: String, 
+        default: 'draft', enum: ['draft', 'published']
     },
     read_count: {
-        type: Number
+        type: Number,
+        default: 0
     },
     reading_time: {
         type: Number
@@ -30,9 +34,10 @@ const blogSchema = new Schema ({
         type: String,
         required: true
     },
-    timestamp: {
-        type: Date,
-        default: Date.now
+    timestamp: true,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 
