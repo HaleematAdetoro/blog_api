@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema();
 
 
-const blogSchema = new Schema ({
+const BlogSchema = new Schema ({
     title: {
         type: String,
         required: true,
@@ -13,8 +13,9 @@ const blogSchema = new Schema ({
         type: String
     },
     author: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     },
     state: {
         type: String, 
@@ -35,12 +36,8 @@ const blogSchema = new Schema ({
         required: true
     },
     timestamp: true,
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
 })
 
-const blogModel = mongoose.model("blogs", blogSchema);
+const BlogModel = mongoose.model('Blogs', BlogSchema);
 
-module.exports = blogModel;
+module.exports = BlogModel;

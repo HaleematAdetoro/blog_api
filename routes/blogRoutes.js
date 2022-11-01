@@ -7,7 +7,7 @@ blogRouter.get('/', blogController.getAllPublishedPosts);
     
 blogRouter.get('/:userId', blogController.getAllUsersPosts);
 
-blogRouter.post("/", blogController.createNewPost);
+blogRouter.post("/post", blogController.createNewPost);
 
 blogRouter.patch("/:blogId", blogController.updateOnePost);
 
