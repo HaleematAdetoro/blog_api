@@ -1,8 +1,22 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
 
 require('dotenv').config();
+
+const UserModel = require('../models/userModel');
+
+const signup = async(req, res,) => {
+    try{
+        return res.status(201).json({
+            status: true,
+            data: req.user
+        }) 
+    } catch (error) {
+        res.status(500).json({ status: false, data: error})
+    }
+    
+   
+}
 
 const login = (req, res, { err, user, info}) => {
     if (!user) {
@@ -23,4 +37,10 @@ const login = (req, res, { err, user, info}) => {
 }
 
 
-module.exports = login;
+
+module.exports = {
+    signup,
+    login
+}
+
+

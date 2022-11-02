@@ -1,4 +1,7 @@
 const express = require('express');
+const passport = require('passport');
+
+const AuthRouter = require('./routes/auth')
 
 const app = express();
 const PORT = process.env.PORT || 5000
@@ -8,12 +11,14 @@ require('dotenv').config()
 
 require('./middleware/auth')
 
+
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 
-app.use('/', authRoute);
-app.use('/blog', passport.authentication('jwt', { session: false }), blogsRoute);
+app.use('/', AuthRouter);
+
 
 app.get('/', (req, res) => {
     res.send('home')
