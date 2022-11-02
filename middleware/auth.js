@@ -1,6 +1,6 @@
 const passport = require('passport');
 const localStrategy = require('passport-local');
-const UserModel = require('./models/userModel')
+const UserModel = require('../models/userModel')
 require('dotenv').config();
 
 const JWTstrategy = require('passport-jwt').Strategy;
