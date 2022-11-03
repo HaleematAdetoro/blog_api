@@ -40,7 +40,7 @@ passport.use(
             } catch (error) {
                 done(error);
             }
-        }
+        } 
     )
 )
 
@@ -50,7 +50,7 @@ passport.use(
     new localStrategy(
         {
             usernameField: 'email',
-            passwordField: 'password'
+            passwordField: 'password',
         },
         async (email, password, done) => {
             try{
