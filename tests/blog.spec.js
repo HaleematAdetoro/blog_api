@@ -34,7 +34,12 @@ describe('Blog Route', () => {
     })
 
     it('Should return all published blogs', async () => {
+
         await BlogModel.create({
+            title: 'My first day',
+            description: 'Describing the activities of a day',
+            author: 'user._id',
+            state: 'draft',
             
         })
     })
