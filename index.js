@@ -1,7 +1,9 @@
 const express = require('express');
 const passport = require('passport');
 
-const AuthRouter = require('./routes/auth')
+const AuthRouter = require('./routes/auth');
+const blogRouter = require('./routes/blogRoutes');
+const homeRouter = require('./routes/homeRoutes')
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.use(express.urlencoded({ extended: false }))
 
 
 app.use('/', AuthRouter);
+app.use('/blogs', homeRouter),
+app.use('/blog', passport.authenticate('jwt', { session: false }), blogRouter);
 
 
 app.get('/', (req, res) => {
