@@ -3,6 +3,8 @@ const { connect } = require('./database');
 const UserModel = require('../models/userModel');
 const app = require('../index');
 
+
+
 describe('auth: Signup', () => {
     let conn;
 
@@ -21,9 +23,9 @@ describe('auth: Signup', () => {
     it('should signup a user', async () => {
         // const user = await UserModel.create({ first_name: 'titi', last_name: 'layo', email: 'titi@gmail.com', username: 'great', password: 'qwerty'})
         const response = await request(app)
-        .post('/signup')
-        .set('content-type', 'application/json')
-        .send({
+            .post('/signup')
+            .set('content-type', 'application/json')
+            .send({
             first_name: 'titi',
             last_name: 'layo',
             email: 'titi@gmail.com',
@@ -39,10 +41,12 @@ describe('auth: Signup', () => {
         expect(response.body.data).toHaveProperty('username', 'great')
     })
 
+
     it('should login a user', async () => {
         // create user in out db
         const user = await UserModel.create({ first_name: 'titi', last_name: 'layo', email: 'titi@gmail.com', username: 'great', password: 'qwerty'})
-        // const user = await UserModel.find({ username: 'tobi@gmail.com', password: '123456'});
+
+        // const user = await UserModel.create({ username: 'tobi@gmail.com', password: '123456'});
 
         // login user
         const response = await request(app)
@@ -56,5 +60,38 @@ describe('auth: Signup', () => {
 
         expect(response.status).toBe(200)
         expect(response.body).toHaveProperty('token')      
+    })
+
+    it('should not log in a user with incorrect email', async () => {
+           // create user in out db
+        const user = await UserModel.create({ first_name: 'titi', last_name: 'layo', email: 'titi@gmail.com', username: 'great', password: 'qwerty'})
+
+         // login user
+         const response = await request(app)
+         .post('/login')
+         .set('content-type', 'application/json')
+         .send({ 
+             email: 'ti@gmail.com', 
+             password: 'qwerty'
+         });
+
+         expect(response.status).toBe(401);
+     
+    })
+
+    it('should not login a user with incorrect password', async () => {
+            // create user in out db
+            const user = await UserModel.create({ first_name: 'titi', last_name: 'layo', email: 'titi@gmail.com', username: 'great', password: 'qwerty'})
+
+            // login user
+            const response = await request(app)
+            .post('/login')
+            .set('content-type', 'application/json')
+            .send({ 
+                email: 'titi@gmail.com', 
+                password: 'code'
+            });
+   
+            expect(response.status).toBe(401);
     })
 })
