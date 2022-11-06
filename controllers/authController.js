@@ -10,7 +10,8 @@ const signup = async(req, res,) => {
     try{
         return res.status(201).json({
             status: true,
-            data: req.user
+            message: 'Signup successful',
+            user: req.user
         }) 
     } catch (error) {
         res.status(500).json({ status: false, data: error})
@@ -36,7 +37,7 @@ const login = async (error, req, res, next, user, info) => {
         
                 const token = jwt.sign({ user: body }, process.env.JWT_SECRET, { expiresIn: '1h' })
         
-                return res.status(200).json({ token });
+                return res.status(200).json({ message: 'Login succesful', token });
             }
         );
     } catch (error) {
