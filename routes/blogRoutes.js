@@ -3,15 +3,19 @@ const blogController = require('../controllers/blogController');
 
 const blogRouter = express.Router();
 
-blogRouter.get('/', blogController.getAllPublishedPosts);
+blogRouter.get('/', blogController.getAllPublishedBlogs);
     
-blogRouter.get('/:userId', blogController.getAllUsersPosts);
+blogRouter.get('/:id', blogController.getAllUserBlogs);
 
-blogRouter.post("/post", blogController.createNewPost);
+blogRouter.get('/:blogId', blogController.getPublishedBlog);
 
-blogRouter.patch("/:blogId", blogController.updateOnePost);
+blogRouter.post('/', blogController.createNewBlog);
 
-blogRouter.delete("/:blogId", blogController.deleteOnePost);
+blogRouter.patch('/blogId', blogController.updateBlogState)
+
+blogRouter.put('/:blogId', blogController.updateBlog);
+
+blogRouter.delete('/:blogId', blogController.deleteOneBlog);
 
 
 module.exports = blogRouter;
