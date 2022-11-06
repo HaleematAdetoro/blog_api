@@ -1,5 +1,6 @@
 
 const BlogModel = require('../models/blogModel');
+require('dotenv').config();
 
 
 const getAllUserBlogs = async (req, res) => {

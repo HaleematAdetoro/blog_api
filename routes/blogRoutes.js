@@ -1,5 +1,6 @@
 const express = require('express');
 const blogController = require('../controllers/blogController');
+require('dotenv').config();
 
 const blogRouter = express.Router();
 

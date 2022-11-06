@@ -6,6 +6,7 @@ const blogRouter = require('./routes/blogRoutes');
 const homeRouter = require('./routes/homeRoutes')
 
 const app = express();
+require('dotenv').config();
 
 require('./middleware/auth')
 
