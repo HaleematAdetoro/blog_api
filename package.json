@@ -1,13 +1,14 @@
 {
-  "name": "src",
+  "name": "blog_api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --forceExit",
+    "start:dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Haleenat Adetoro",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -21,5 +22,8 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "supertest": "^6.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
