@@ -1,6 +1,6 @@
 const app = require('./index')
+const CONFIG = require('./config/config')
 
-const PORT = process.env.PORT || 5000
 
 require('./database/db').connectToMongoDB()
 require('dotenv').config()
